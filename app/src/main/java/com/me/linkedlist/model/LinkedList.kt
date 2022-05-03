@@ -11,8 +11,6 @@ class LinkedList<T> {
         return size == 0
     }
 
-
-
     override fun toString(): String {
         return if (isEmpty()) {
             "Empty list"
@@ -76,5 +74,56 @@ class LinkedList<T> {
         afterNode.next = node
         size++
         return node
+    }
+
+    fun pop(): T? {
+        //Remove at head
+        if (!isEmpty()) size--
+        val result = head?.value
+        head = head?.next
+        if (isEmpty()) {
+            tail = null
+        }
+
+        return result
+    }
+
+    fun removeLast(): T? {
+        // 1
+        val head = head ?: return null
+        // 2
+        if (head.next == null) return pop()
+        // 3
+        size--
+
+        // 4
+        var prev = head
+        var current = head
+
+        var next = current.next
+        while (next != null) {
+            prev = current
+            current = next
+            next = current.next
+        }
+        // 5
+        prev.next = null
+        tail = prev
+        return current.value
+    }
+
+    fun removeAfter(node: Node<T>): T? {
+        val result = node.next?.value
+
+        if (node.next == tail) {
+            tail = node
+        }
+
+        if (node.next != null) {
+            size--
+        }
+
+        node.next = node.next?.next
+        return result
     }
 }

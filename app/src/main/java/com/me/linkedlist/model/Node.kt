@@ -1,6 +1,6 @@
 package com.me.linkedlist.model
 
-const val TAG = "_LINKED"
+const val TAG = "MY_LINKED"
 var recursiveStr = ""
 
 data class Node<T>(

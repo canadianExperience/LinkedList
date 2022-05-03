@@ -49,17 +49,28 @@ fun linkedListExample(){
         //Add value at the end of the list
         .append(6)
 
-    Log.d(TAG, linkedList.toString())
+    Log.d(TAG, "Initial linked list: ${linkedList.toString()}")
 
     //Insert new Node to position = 3, node value = 77
     val node = linkedList.nodeAt(3)
     linkedList.insert(77, node!!)
 
-    Log.d(TAG, "Inserted new node: 77 to position = 3:  ${linkedList.toString()}")
+    Log.d(TAG, "Insert node 77 to position = 3:  ${linkedList.toString()}")
 
     //Reversing
     iterativeReverse(linkedList)
     recursiveReverse(linkedList)
+
+    val headRemoved = linkedList.pop()
+    Log.d(TAG, "Node $headRemoved at head removed:  ${linkedList.toString()}")
+
+    val tailRemoved = linkedList.removeLast()
+    Log.d(TAG, "Node $tailRemoved at tail removed:  ${linkedList.toString()}")
+
+    //Remove node at index 2
+    val n = linkedList.nodeAt(2)
+    val removedNode = linkedList.removeAfter(n!!)
+    Log.d(TAG, "Remove node $removedNode at position = 2:  ${linkedList.toString()}")
 }
 
 
