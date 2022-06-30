@@ -1,23 +1,13 @@
 package com.me.linkedlist.model
 
-const val TAG = "MY_LINKED"
-var recursiveStr = ""
-
-data class Node<T>(
-    var value: T,
-    var next: Node<T>? = null
+data class Node(
+    val data: Int,
+    var next: Node?
 ){
 
     override fun toString(): String {
-        return if (next != null) {
-            "$value -> ${next.toString()}"
-        } else {
-            "$value"
+        return if(next != null)"$data -> ${next.toString()}" else{
+            "$data"
         }
-    }
-
-    fun printInReverse(){
-        next?.printInReverse()
-        recursiveStr = "$recursiveStr ${value.toString()} ->"
     }
 }
